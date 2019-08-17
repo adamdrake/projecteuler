@@ -22,7 +22,7 @@ fn is_palindromic_v1(i: i32) -> bool {
 
 // is_palindromic_v2() will build up a new number `reverse` by shifting `reverse` one decimal place
 // and adding the 10s place of the candidate number until no places are left in the candidate
-// number.  In this way, `reverse` is constructed as the successive tens place numbers.
+// number.  In this way, `reverse` is constructed as the sequence of successive tens place numbers
 // from the original candidate number.  This version is ~16x faster than is_palindromic_v1().
 fn is_palindromic_v2(i: i32) -> bool {
     let mut reversed = 0;
@@ -35,8 +35,8 @@ fn is_palindromic_v2(i: i32) -> bool {
     return reversed == i || i == number / 10;
 }
 
-// v0() is the naive attempt: multiply three-digit numbers until palindrome is found
-// if it's larger than the most recent palindrom found then keep it.  Iterate until the end.
+// v0() is the naive attempt: multiply three-digit numbers.  When a palindromic number is found,
+// if it's larger than the most recent palindromic number found then keep it.  Iterate until the end 999.
 fn v0() -> i32 {
     let mut res = 0;
     for i in 100..=999 {
@@ -59,7 +59,7 @@ fn v1() -> i32 {
             // Note that this order changed.
             // Consequently, the right-hand side of the && is only evaluated if needed.
             // This is important since string casting and reversing is so slow and the search
-            // space is so large.  Many languages have short-circuit/lazy evalution.
+            // space is so large.  Many languages have short-circuit/lazy evaluation.
             // This matters less as we start restricting the search space.
             if prod > res && is_palindromic_v1(prod) {
                 res = prod;
@@ -105,7 +105,7 @@ fn v3() -> i32 {
     return res;
 }
 
-// v4(): Note that the number is probably 6 digits, i.e. abccba = p * q where each letter is some number between 0 and 9
+// v4(): Note that the number is probably 6 digits, i.e. abccba = p * q where each letter is some number between 1 and 9
 // then we can rewrite as a * 100000 + b * 10000 + c * 1000 + c * 100 + b * 10 + a * 1 = p * q
 // which we can rewrite as a * 100001 + b * 10010 + c * 1100 = p * q
 // which can be factored to 11 * (a * 9091 + b * 910 + c * 100) = p * q
@@ -114,8 +114,7 @@ fn v3() -> i32 {
 //
 // Since p or q must be divisible by 11, just start the iteration at 990 because it is
 // the largest possible number in the given range that is also divisible by 11 and
-// work our way down in steps of 11 versus checking divisibility with modulus operator
-// since the modulus operator must do multiple arithmetic operations and is comparatively slow.
+// work our way down in steps of 11.
 fn v4() -> i32 {
     let mut res = 0;
     for i in (100..=990).rev().step_by(11) {

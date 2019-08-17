@@ -11,3 +11,5 @@ For more details, see my blog posts:
 [An Unreasonably Deep Dive Into Project Euler Problem 2](https://adamdrake.com/an-unreasonably-deep-dive-into-project-euler-problem-2.html)
 
 [An Unreasonably Deep Dive Into Project Euler Problem 3](https://adamdrake.com/an-unreasonably-deep-dive-into-project-euler-problem-3.html)
+
+[An Unreasonably Deep Dive Into Project Euler Problem 4](https://adamdrake.com/an-unreasonably-deep-dive-into-project-euler-problem-4.html)
